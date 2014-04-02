@@ -1,0 +1,2083 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+html,body,#mapcanvas {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+}
+</style>
+
+</head>
+<body>
+	<div id="mapcanvas"></div>
+	<script src="https://maps.googleapis.com/maps/api/js?sensor=false&libraries=visualization"></script>
+	<script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+
+	<script>
+		function init()
+		{
+			var mapOptions =
+			{
+				zoom : 13,
+				center : new google.maps.LatLng(51.5136905, -0.1472868),
+				mapTypeId : google.maps.MapTypeId.SATELLITE
+			};
+
+			var map = new google.maps.Map(document.getElementById('mapcanvas'),
+					mapOptions);
+
+			// 			$.getJSON('lle.json')
+
+			// 			.done(function(data)
+			// 			{
+			// 				for (var i = 0; i < data.length; i++)
+			// 				{
+			// 					  display(data[i], map);
+			// 				}
+			// 			})
+			// 			.fail(function(jqxhr, textStatus, error)
+			// 			{
+			// 				console.log("error " +textStatus+" "+error);
+			// 			});
+
+			var data = [
+					{
+						"StreetName" : "ALFRED ROAD", "value" : 0.153439,
+						"lat" : 51.5215502, "long" : -0.1928357
+					},
+					{
+						"StreetName" : "BAYSWATER ROAD", "value" : 0.003035,
+						"lat" : 51.5129165, "long" : -0.1632581
+					},
+					{
+						"StreetName" : "BURNE STREET", "value" : 0.002797,
+						"lat" : 51.5209141, "long" : -0.1692065
+					},
+					{
+						"StreetName" : "OSBERT STREET", "value" : 0.003502,
+						"lat" : 51.4913938, "long" : -0.1348815
+					},
+					{
+						"StreetName" : "ALLINGTON STREET", "value" : 0.002932,
+						"lat" : 51.4971946, "long" : -0.1445117
+					},
+					{
+						"StreetName" : "KNIGHTSBRIDGE", "value" : 0.002739,
+						"lat" : 51.5020845, "long" : -0.1608769
+					},
+					{
+						"StreetName" : "MOUNT STREET MEWS", "value" : 0.002931,
+						"lat" : 51.5101007, "long" : -0.1488881
+					},
+					{
+						"StreetName" : "SHEPHERD MARKET", "value" : 0.002879,
+						"lat" : 51.5063505, "long" : -0.1477288
+					},
+					{
+						"StreetName" : "ELGIN AVENUE", "value" : 0.002768,
+						"lat" : 51.5246206, "long" : -0.2001094
+					},
+					{
+						"StreetName" : "GREAT CASTLE STREET",
+						"value" : 0.002792, "lat" : 51.5161264,
+						"long" : -0.1409614
+					},
+					{
+						"StreetName" : "GEORGE COURT", "value" : 0.002994,
+						"lat" : 51.508941, "long" : -0.1234422
+					},
+					{
+						"StreetName" : "STRATTON STREET", "value" : 0.00292,
+						"lat" : 51.5082413, "long" : -0.1433289
+					},
+					{
+						"StreetName" : "CARLTON STREET", "value" : 0.002658,
+						"lat" : 51.508593, "long" : -0.1337602
+					},
+					{
+						"StreetName" : "GERRARD STREET", "value" : 0.002836,
+						"lat" : 51.5117617, "long" : -0.1311374
+					},
+					{
+						"StreetName" : "CARLISLE STREET", "value" : 0.002907,
+						"lat" : 51.5148285, "long" : -0.1339809
+					},
+					{
+						"StreetName" : "PARLIAMENT SQUARE", "value" : 0.00015,
+						"lat" : 51.5002, "long" : -0.1262508
+					},
+					{
+						"StreetName" : "FLEET STREET", "value" : 0.002609,
+						"lat" : 51.513759, "long" : -0.1115412
+					},
+					{
+						"StreetName" : "DOUGLAS STREET", "value" : 0.002999,
+						"lat" : 51.4913789, "long" : -0.1336281
+					},
+					{
+						"StreetName" : "CRAVEN HILL MEWS", "value" : 0.002896,
+						"lat" : 51.5133995, "long" : -0.1815566
+					},
+					{
+						"StreetName" : "KINGS SCHOLARS' PASSAGE",
+						"value" : 0.002882, "lat" : 51.4939619,
+						"long" : -0.139991
+					},
+					{
+						"StreetName" : "MARKET COURT", "value" : 0.001661,
+						"lat" : 51.5155249, "long" : -0.1398906
+					},
+					{
+						"StreetName" : "HEREFORD MEWS", "value" : 0.002903,
+						"lat" : 51.5154444, "long" : -0.1940143
+					},
+					{
+						"StreetName" : "EMBANKMENT PLACE", "value" : 0.002886,
+						"lat" : 51.506721, "long" : -0.1231922
+					},
+					{
+						"StreetName" : "BROADBENT STREET", "value" : 0.001828,
+						"lat" : 51.5117985, "long" : -0.1467779
+					},
+					{
+						"StreetName" : "GREAT TITCHFIELD STREET",
+						"value" : 0.002748, "lat" : 51.5203508,
+						"long" : -0.1413947
+					},
+					{
+						"StreetName" : "SHERATON STREET", "value" : 0.002836,
+						"lat" : 51.5150379, "long" : -0.1341453
+					},
+					{
+						"StreetName" : "KING STREET", "value" : 0.153505,
+						"lat" : 51.50875505, "long" : -0.13167605
+					},
+					{
+						"StreetName" : "ORME COURT", "value" : 0.00292,
+						"lat" : 51.5101246, "long" : -0.1890726
+					},
+					{
+						"StreetName" : "GREAT PORTLAND STREET",
+						"value" : 0.002809, "lat" : 51.5190969,
+						"long" : -0.1422818
+					},
+					{
+						"StreetName" : "CHURTON STREET", "value" : 0.002842,
+						"lat" : 51.4913563, "long" : -0.1390022
+					},
+					{
+						"StreetName" : "ORCHARDSON STREET", "value" : 0.002891,
+						"lat" : 51.5239565, "long" : -0.1746466
+					},
+					{
+						"StreetName" : "COVENT GARDEN", "value" : 0.002791,
+						"lat" : 51.5115368, "long" : -0.1226869
+					},
+					{
+						"StreetName" : "HAMPDEN GURNEY STREET",
+						"value" : 0.001689, "lat" : 51.5151637,
+						"long" : -0.1620434
+					},
+					{
+						"StreetName" : "PARK ROAD", "value" : 0.003046,
+						"lat" : 51.5278946, "long" : -0.16479575
+					},
+					{
+						"StreetName" : "CLIPSTONE MEWS", "value" : 0.002984,
+						"lat" : 51.5212385, "long" : -0.1406667
+					},
+					{
+						"StreetName" : "REGENCY PLACE", "value" : 0.153528,
+						"lat" : 51.4947041, "long" : -0.1323686
+					},
+					{
+						"StreetName" : "OLDBURY PLACE", "value" : 0.002929,
+						"lat" : 51.5216964, "long" : -0.1525692
+					},
+					{
+						"StreetName" : "BATHURST MEWS", "value" : 0.002919,
+						"lat" : 51.5133773, "long" : -0.1746162
+					},
+					{
+						"StreetName" : "FRITH STREET", "value" : 0.002705,
+						"lat" : 51.5140021, "long" : -0.1317807
+					},
+					{
+						"StreetName" : "LOWER BELGRAVE STREET",
+						"value" : 0.00285, "lat" : 51.4965978,
+						"long" : -0.1480092
+					},
+					{
+						"StreetName" : "CARTING LANE", "value" : 0.002992,
+						"lat" : 51.5101932, "long" : -0.1211743
+					},
+					{
+						"StreetName" : "FLAXMAN COURT", "value" : 0.153522,
+						"lat" : 51.5139713, "long" : -0.1343618
+					},
+					{
+						"StreetName" : "NEW ROW", "value" : 0.002787,
+						"lat" : 51.5110312, "long" : -0.12706
+					},
+					{
+						"StreetName" : "ST ALBAN'S STREET", "value" : 0.002881,
+						"lat" : 51.5092523, "long" : -0.133373
+					},
+					{
+						"StreetName" : "GREAT WESTERN ROAD",
+						"value" : 0.002751, "lat" : 51.5205865,
+						"long" : -0.2003406
+					},
+					{
+						"StreetName" : "CRAIG'S COURT", "value" : 0.002867,
+						"lat" : 51.506663, "long" : -0.12731
+					},
+					{
+						"StreetName" : "GOODWIN'S COURT", "value" : 0.000177,
+						"lat" : 51.5108597, "long" : -0.1270238
+					},
+					{
+						"StreetName" : "CHAPONE PLACE", "value" : 0.002736,
+						"lat" : 51.5142604, "long" : -0.1329293
+					},
+					{
+						"StreetName" : "HALLAM STREET", "value" : 0.002744,
+						"lat" : 51.5212092, "long" : -0.1439256
+					},
+					{
+						"StreetName" : "GROSVENOR GARDENS", "value" : 0.003018,
+						"lat" : 51.4959139, "long" : -0.1454804
+					},
+					{
+						"StreetName" : "OLD COMPTON STREET",
+						"value" : 0.002916, "lat" : 51.5130058,
+						"long" : -0.1317297
+					},
+					{
+						"StreetName" : "BROWN HART GARDENS",
+						"value" : 0.002674, "lat" : 51.5129198,
+						"long" : -0.1520165
+					},
+					{
+						"StreetName" : "NORTHUMBERLAND AVENUE",
+						"value" : 0.002722, "lat" : 51.506721,
+						"long" : -0.1231922
+					},
+					{
+						"StreetName" : "NEW CAVENDISH STREET",
+						"value" : 0.153552, "lat" : 51.5196256,
+						"long" : -0.1455756
+					},
+					{
+						"StreetName" : "DANSEY PLACE", "value" : 0.002776,
+						"lat" : 51.5116275, "long" : -0.1323103
+					},
+					{
+						"StreetName" : "SAVILE ROW", "value" : 0.00279,
+						"lat" : 51.5112942, "long" : -0.1407692
+					},
+					{
+						"StreetName" : "CROXLEY ROAD", "value" : 0.002644,
+						"lat" : 51.5294208, "long" : -0.1994009
+					},
+					{
+						"StreetName" : "BOTTS MEWS", "value" : 0.002841,
+						"lat" : 51.5154444, "long" : -0.1951818
+					},
+					{
+						"StreetName" : "MORETON TERRACE", "value" : 0.00292,
+						"lat" : 51.4886047, "long" : -0.1374616
+					},
+					{
+						"StreetName" : "GROSVENOR STREET", "value" : 0.002812,
+						"lat" : 51.5111775, "long" : -0.149882
+					},
+					{
+						"StreetName" : "HOPKINS STREET", "value" : 0.153523,
+						"lat" : 51.5128997, "long" : -0.134838
+					},
+					{
+						"StreetName" : "ROMNEY STREET", "value" : 0.153557,
+						"lat" : 51.4952468, "long" : -0.1269295
+					},
+					{
+						"StreetName" : "FERMOY ROAD", "value" : 0.153451,
+						"lat" : 51.5248572, "long" : -0.2043959
+					},
+					{
+						"StreetName" : "ST JOHN'S WOOD HIGH STREET",
+						"value" : 0.00284, "lat" : 51.5313552,
+						"long" : -0.1680954
+					},
+					{
+						"StreetName" : "LANGLEY STREET", "value" : 0.003005,
+						"lat" : 51.5128565, "long" : -0.1247945
+					},
+					{
+						"StreetName" : "BEDFORD COURT", "value" : 0.002813,
+						"lat" : 51.5104519, "long" : -0.1257003
+					},
+					{
+						"StreetName" : "TITCHBORNE ROW", "value" : 0.002741,
+						"lat" : 51.5148381, "long" : -0.1676775
+					},
+					{
+						"StreetName" : "HAY HILL", "value" : 0.00282,
+						"lat" : 51.508929, "long" : -0.1441656
+					},
+					{
+						"StreetName" : "RAMILLIES PLACE", "value" : 0.002895,
+						"lat" : 51.5150883, "long" : -0.1390148
+					},
+					{
+						"StreetName" : "BAKER STREET", "value" : 0.002728,
+						"lat" : 51.5194526, "long" : -0.156278
+					},
+					{
+						"StreetName" : "HANOVER SQUARE", "value" : 0.002818,
+						"lat" : 51.51388435, "long" : -0.14394325
+					},
+					{
+						"StreetName" : "BUTLER PLACE", "value" : 0.153535,
+						"lat" : 51.4978618, "long" : -0.1358413
+					},
+					{
+						"StreetName" : "JERMYN STREET", "value" : 0.002735,
+						"lat" : 51.507892, "long" : -0.1383138
+					},
+					{
+						"StreetName" : "BRYDGES PLACE", "value" : 0.002848,
+						"lat" : 51.5097069, "long" : -0.1269126
+					},
+					{
+						"StreetName" : "IRVING STREET", "value" : 0.153603,
+						"lat" : 51.5100942, "long" : -0.1296115
+					},
+					{
+						"StreetName" : "QUEEN'S WALK", "value" : 0.003777,
+						"lat" : 51.5026729, "long" : -0.1386707
+					},
+					{
+						"StreetName" : "ALBION STREET", "value" : 0.002825,
+						"lat" : 51.5131321, "long" : -0.1666939
+					},
+					{
+						"StreetName" : "DORSET SQUARE", "value" : 0.002908,
+						"lat" : 51.5229856, "long" : -0.1602147
+					},
+					{
+						"StreetName" : "DRYDEN STREET", "value" : 0.002896,
+						"lat" : 51.5148596, "long" : -0.1224061
+					},
+					{
+						"StreetName" : "KINGLY STREET", "value" : 0.003038,
+						"lat" : 51.5127936, "long" : -0.139483
+					},
+					{
+						"StreetName" : "CRAWFORD STREET", "value" : 0.002967,
+						"lat" : 51.5196683, "long" : -0.1602764
+					},
+					{
+						"StreetName" : "OXFORD STREET", "value" : 0.153497,
+						"lat" : 51.5154512, "long" : -0.1406854
+					},
+					{
+						"StreetName" : "EXCHANGE COURT", "value" : 0.001179,
+						"lat" : 51.5099454, "long" : -0.1232712
+					},
+					{
+						"StreetName" : "PRAED STREET", "value" : 0.002776,
+						"lat" : 51.5159583, "long" : -0.1749476
+					},
+					{
+						"StreetName" : "CONDUIT COURT", "value" : 0.002915,
+						"lat" : 51.5119582, "long" : -0.1254223
+					},
+					{
+						"StreetName" : "D'ARBLAY STREET", "value" : 0.002362,
+						"lat" : 51.5144902, "long" : -0.1364593
+					},
+					{
+						"StreetName" : "CHAPEL STREET", "value" : 0.002941,
+						"lat" : 51.5192573, "long" : -0.1690712
+					},
+					{
+						"StreetName" : "RICHMOND MEWS", "value" : 0.002676,
+						"lat" : 51.5141098, "long" : -0.1336617
+					},
+					{
+						"StreetName" : "STAR STREET", "value" : 0.002946,
+						"lat" : 51.5171204, "long" : -0.1710163
+					},
+					{
+						"StreetName" : "NOEL STREET", "value" : 0.002925,
+						"lat" : 51.5148256, "long" : -0.137195
+					},
+					{
+						"StreetName" : "APPLE TREE YARD", "value" : 0.002776,
+						"lat" : 51.5085335, "long" : -0.1353891
+					},
+					{
+						"StreetName" : "GLOUCESTER MEWS WEST",
+						"value" : 0.002694, "lat" : 51.5157153,
+						"long" : -0.1819905
+					},
+					{
+						"StreetName" : "HAY'S MEWS", "value" : 0.002834,
+						"lat" : 51.5080588, "long" : -0.1482792
+					},
+					{
+						"StreetName" : "CHURCH STREET", "value" : 0.002998,
+						"lat" : 51.5227715, "long" : -0.171251
+					},
+					{
+						"StreetName" : "CHURCHILL GARDENS ROAD",
+						"value" : 0.003169, "lat" : 51.4862928,
+						"long" : -0.1381736
+					},
+					{
+						"StreetName" : "BATEMAN'S BUILDINGS",
+						"value" : 0.002822, "lat" : 51.5141318,
+						"long" : -0.1313876
+					},
+					{
+						"StreetName" : "CROWN COURT", "value" : 0.002408,
+						"lat" : 51.5136017, "long" : -0.1213481
+					},
+					{
+						"StreetName" : "LODGE ROAD", "value" : 0.000138,
+						"lat" : 51.5275128, "long" : -0.1718295
+					},
+					{
+						"StreetName" : "PANTON STREET", "value" : 0.002661,
+						"lat" : 51.5098091, "long" : -0.1310284
+					},
+					{
+						"StreetName" : "SOHO SQUARE", "value" : 0.002931,
+						"lat" : 51.5154396, "long" : -0.1316931
+					},
+					{
+						"StreetName" : "ST ANSELM'S PLACE", "value" : 0.002807,
+						"lat" : 51.5131531, "long" : -0.1497011
+					},
+					{
+						"StreetName" : "BALDERTON STREET", "value" : 0.002689,
+						"lat" : 51.5137447, "long" : -0.1524299
+					},
+					{
+						"StreetName" : "NEWPORT COURT", "value" : 0.002881,
+						"lat" : 51.511989, "long" : -0.1296005
+					},
+					{
+						"StreetName" : "ESSEX STREET", "value" : 0.00296,
+						"lat" : 51.5126376, "long" : -0.112827
+					},
+					{
+						"StreetName" : "MOLYNEUX STREET", "value" : 0.002988,
+						"lat" : 51.5186409, "long" : -0.1653051
+					},
+					{
+						"StreetName" : "ARGYLL STREET", "value" : 0.153649,
+						"lat" : 51.5140109, "long" : -0.1402549
+					},
+					{
+						"StreetName" : "BUCKINGHAM GATE", "value" : 0.00298,
+						"lat" : 51.5000406, "long" : -0.1407178
+					},
+					{
+						"StreetName" : "HYDE PARK CRESCENT",
+						"value" : 0.002746, "lat" : 51.5151176,
+						"long" : -0.168877
+					},
+					{
+						"StreetName" : "HUNTSWORTH MEWS", "value" : 0.002824,
+						"lat" : 51.5243256, "long" : -0.1613716
+					},
+					{
+						"StreetName" : "DUKE OF YORK STREET",
+						"value" : 0.002967, "lat" : 51.5076614,
+						"long" : -0.1356861
+					},
+					{
+						"StreetName" : "TAVISTOCK COURT", "value" : 0.002732,
+						"lat" : 51.511635, "long" : -0.1215156
+					},
+					{
+						"StreetName" : "EDBROOKE ROAD", "value" : 0.002801,
+						"lat" : 51.5255094, "long" : -0.1964991
+					},
+					{
+						"StreetName" : "MARYLEBONE HIGH STREET",
+						"value" : 0.003041, "lat" : 51.5198494,
+						"long" : -0.1517791
+					},
+					{
+						"StreetName" : "SUFFOLK STREET", "value" : 0.002686,
+						"lat" : 51.5083361, "long" : -0.1306148
+					},
+					{
+						"StreetName" : "LONG ACRE WALKWAY", "value" : 0.153653,
+						"lat" : 51.5139642, "long" : -0.1237689
+					},
+					{
+						"StreetName" : "BERNERS PLACE", "value" : 0.002725,
+						"lat" : 51.5170084, "long" : -0.1359096
+					},
+					{
+						"StreetName" : "BOSTON PLACE", "value" : 0.002992,
+						"lat" : 51.5240177, "long" : -0.1629553
+					},
+					{
+						"StreetName" : "RED PLACE", "value" : 0.0029,
+						"lat" : 51.5132393, "long" : -0.1551742
+					},
+					{
+						"StreetName" : "GOSLETT YARD", "value" : 0.002677,
+						"lat" : 51.5153321, "long" : -0.1300792
+					},
+					{
+						"StreetName" : "BREWER STREET", "value" : 0.002795,
+						"lat" : 51.5111941, "long" : -0.1361615
+					},
+					{
+						"StreetName" : "FORSET STREET", "value" : 0.002838,
+						"lat" : 51.5165595, "long" : -0.1643671
+					},
+					{
+						"StreetName" : "MOUNT STREET", "value" : 0.002808,
+						"lat" : 51.5095526, "long" : -0.1517637
+					},
+					{
+						"StreetName" : "CHANDOS PLACE", "value" : 0.002637,
+						"lat" : 51.5098102, "long" : -0.1254961
+					},
+					{
+						"StreetName" : "RUSSELL STREET", "value" : 0.153518,
+						"lat" : 51.5122737, "long" : -0.1220946
+					},
+					{
+						"StreetName" : "ARCHER STREET", "value" : 0.002957,
+						"lat" : 51.5118327, "long" : -0.1333395
+					},
+					{
+						"StreetName" : "BUCKINGHAM PALACE ROAD",
+						"value" : 0.002759, "lat" : 51.4921157,
+						"long" : -0.14827295
+					},
+					{
+						"StreetName" : "MARYLEBONE PASSAGE",
+						"value" : 0.002961, "lat" : 51.5171828,
+						"long" : -0.138396
+					},
+					{
+						"StreetName" : "DUNRAVEN STREET", "value" : 0.002757,
+						"lat" : 51.5116018, "long" : -0.1568401
+					},
+					{
+						"StreetName" : "HUNTS COURT", "value" : 0.00005,
+						"lat" : 51.5106765, "long" : -0.1290634
+					},
+					{
+						"StreetName" : "CHARLES II STREET", "value" : 0.002827,
+						"lat" : 51.5084716, "long" : -0.1317242
+					},
+					{
+						"StreetName" : "SWALLOW PLACE", "value" : 0.002083,
+						"lat" : 51.5149629, "long" : -0.1424501
+					},
+					{
+						"StreetName" : "LEAMINGTON ROAD VILLAS",
+						"value" : 0.153468, "lat" : 51.5199127,
+						"long" : -0.2021401
+					},
+					{
+						"StreetName" : "PONSONBY TERRACE", "value" : 0.002995,
+						"lat" : 51.4890654, "long" : -0.1289691
+					},
+					{
+						"StreetName" : "ROSE STREET", "value" : 0.002858,
+						"lat" : 51.5114029, "long" : -0.1255604
+					},
+					{
+						"StreetName" : "ELIZABETH BRIDGE", "value" : 0.00287,
+						"lat" : 51.4925203, "long" : -0.1477711
+					},
+					{
+						"StreetName" : "NEWMAN STREET", "value" : 0.002978,
+						"lat" : 51.5188955, "long" : -0.1369568
+					},
+					{
+						"StreetName" : "HALLAM MEWS", "value" : 0.002799,
+						"lat" : 51.5207881, "long" : -0.1442983
+					},
+					{
+						"StreetName" : "MARGARET STREET", "value" : 0.00288,
+						"lat" : 51.5169093, "long" : -0.139863
+					},
+					{
+						"StreetName" : "DAVIES MEWS", "value" : 0.002836,
+						"lat" : 51.5130713, "long" : -0.1485082
+					},
+					{
+						"StreetName" : "BEAR STREET", "value" : 0.002937,
+						"lat" : 51.5108998, "long" : -0.1284057
+					},
+					{
+						"StreetName" : "BEDFORD STREET", "value" : 0.002824,
+						"lat" : 51.5096957, "long" : -0.1233968
+					},
+					{
+						"StreetName" : "MATTHEW PARKER STREET",
+						"value" : 0.002896, "lat" : 51.4996935,
+						"long" : -0.1305796
+					},
+					{
+						"StreetName" : "MEDWAY STREET", "value" : 0.002923,
+						"lat" : 51.4954247, "long" : -0.1318781
+					},
+					{
+						"StreetName" : "PALMER STREET", "value" : 0.002717,
+						"lat" : 51.4995765, "long" : -0.135656
+					},
+					{
+						"StreetName" : "MARSHAM STREET", "value" : 0.00285,
+						"lat" : 51.4953633, "long" : -0.1291577
+					},
+					{
+						"StreetName" : "RIDING HOUSE STREET",
+						"value" : 0.002906, "lat" : 51.51899945,
+						"long" : -0.1404411
+					},
+					{
+						"StreetName" : "GREAT PETER STREET",
+						"value" : 0.002774, "lat" : 51.4969802,
+						"long" : -0.1256626
+					},
+					{
+						"StreetName" : "MAYFAIR PLACE", "value" : 0.002903,
+						"lat" : 51.5076457, "long" : -0.1426326
+					},
+					{
+						"StreetName" : "LEINSTER SQUARE", "value" : 0.002752,
+						"lat" : 51.5136331, "long" : -0.1914341
+					},
+					{
+						"StreetName" : "ABBEY ROAD", "value" : 0.00289,
+						"lat" : 51.532788, "long" : -0.1781019
+					},
+					{
+						"StreetName" : "MOORHOUSE ROAD", "value" : 0.003647,
+						"lat" : 51.5170744, "long" : -0.1982594
+					},
+					{
+						"StreetName" : "GILBERT STREET", "value" : 0.002609,
+						"lat" : 51.5131531, "long" : -0.1497011
+					},
+					{
+						"StreetName" : "BERKELEY STREET", "value" : 0.002816,
+						"lat" : 51.508929, "long" : -0.1441656
+					},
+					{
+						"StreetName" : "RAMILLIES STREET", "value" : 0.002909,
+						"lat" : 51.5144699, "long" : -0.1385788
+					},
+					{
+						"StreetName" : "LUPUS STREET", "value" : 0.002991,
+						"lat" : 51.4867846667, "long" : -0.1430471333
+					},
+					{
+						"StreetName" : "MARTLETT COURT", "value" : 0.002944,
+						"lat" : 51.5131786, "long" : -0.1218844
+					},
+					{
+						"StreetName" : "LONDON MEWS", "value" : 0.00306,
+						"lat" : 51.5157566, "long" : -0.1746742
+					},
+					{
+						"StreetName" : "CHURCH PLACE", "value" : 0.002803,
+						"lat" : 51.5085785, "long" : -0.1362395
+					},
+					{
+						"StreetName" : "AIR STREET", "value" : 0.002853,
+						"lat" : 51.5094239, "long" : -0.1358552
+					},
+					{
+						"StreetName" : "ALDRIDGE ROAD VILLAS",
+						"value" : 0.0028, "lat" : 51.5183163,
+						"long" : -0.1994932
+					},
+					{
+						"StreetName" : "TRAFALGAR SQUARE", "value" : 0.153501,
+						"lat" : 51.5083368, "long" : -0.1272176
+					},
+					{
+						"StreetName" : "LEXINGTON STREET", "value" : 0.0025,
+						"lat" : 51.5118498, "long" : -0.1349818
+					},
+					{
+						"StreetName" : "BOLSOVER STREET", "value" : 0.002925,
+						"lat" : 51.520911, "long" : -0.1423966
+					},
+					{
+						"StreetName" : "HYDE PARK SQUARE", "value" : 0.002959,
+						"lat" : 51.5141062, "long" : -0.1700619
+					},
+					{
+						"StreetName" : "TACHBROOK STREET", "value" : 0.002712,
+						"lat" : 51.4919583, "long" : -0.1384015
+					},
+					{
+						"StreetName" : "BERNERS STREET", "value" : 0.002977,
+						"lat" : 51.5180934, "long" : -0.1372892
+					},
+					{
+						"StreetName" : "MARKET PLACE", "value" : 0.002853,
+						"lat" : 51.5159145, "long" : -0.1400765
+					},
+					{
+						"StreetName" : "GREAT WINDMILL STREET",
+						"value" : 0.002921, "lat" : 51.5106864,
+						"long" : -0.1339126
+					},
+					{
+						"StreetName" : "GREAT NEWPORT STREET",
+						"value" : 0.003138, "lat" : 51.5118528,
+						"long" : -0.1283954
+					},
+					{
+						"StreetName" : "BESSBOROUGH STREET",
+						"value" : 0.002884, "lat" : 51.4889396,
+						"long" : -0.1326784
+					},
+					{
+						"StreetName" : "STABLE YARD", "value" : 0.002939,
+						"lat" : 51.503913, "long" : -0.1397441
+					},
+					{
+						"StreetName" : "HOWLEY PLACE", "value" : 0.003037,
+						"lat" : 51.5210718, "long" : -0.1805013
+					},
+					{
+						"StreetName" : "CARLISLE PLACE", "value" : 0.002879,
+						"lat" : 51.4959367, "long" : -0.1414665
+					},
+					{
+						"StreetName" : "CAMBRIDGE STREET", "value" : 0.002825,
+						"lat" : 51.4885364, "long" : -0.1403703
+					},
+					{
+						"StreetName" : "DURWESTON MEWS", "value" : 0.002911,
+						"lat" : 51.5201881, "long" : -0.1573005
+					},
+					{
+						"StreetName" : "OLD BOND STREET", "value" : 0.002762,
+						"lat" : 51.5089125, "long" : -0.1408518
+					},
+					{
+						"StreetName" : "GREEN STREET", "value" : 0.003721,
+						"lat" : 51.512299, "long" : -0.1571434
+					},
+					{
+						"StreetName" : "RANDOLPH ROAD", "value" : 0.002884,
+						"lat" : 51.5230009, "long" : -0.1802225
+					},
+					{
+						"StreetName" : "LOWER GROSVENOR PLACE",
+						"value" : 0.002795, "lat" : 51.4982143,
+						"long" : -0.1467334
+					},
+					{
+						"StreetName" : "LINCOLN'S INN FIELDS",
+						"value" : 0.002947, "lat" : 51.5166057,
+						"long" : -0.1185724
+					},
+					{
+						"StreetName" : "BERWICK STREET", "value" : 0.002978,
+						"lat" : 51.5138681, "long" : -0.1351638
+					},
+					{
+						"StreetName" : "HEAD'S MEWS", "value" : 0.002815,
+						"lat" : 51.5152696, "long" : -0.1972641
+					},
+					{
+						"StreetName" : "GUILDHOUSE STREET", "value" : 0.153578,
+						"lat" : 51.4922558, "long" : -0.1412849
+					},
+					{
+						"StreetName" : "GILLINGHAM ROW", "value" : 0.002757,
+						"lat" : 51.4940814, "long" : -0.1407208
+					},
+					{
+						"StreetName" : "REGENCY STREET", "value" : 0.153498,
+						"lat" : 51.4934606, "long" : -0.1322999
+					},
+					{
+						"StreetName" : "LITTLE TITCHFIELD STREET",
+						"value" : 0.002844, "lat" : 51.5182043,
+						"long" : -0.14043
+					},
+					{
+						"StreetName" : "VIRGIL PLACE", "value" : 0.002933,
+						"lat" : 51.5200628, "long" : -0.1631785
+					},
+					{
+						"StreetName" : "BANBURY COURT", "value" : 0.002915,
+						"lat" : 51.5122009, "long" : -0.1248502
+					},
+					{
+						"StreetName" : "CAUSTON STREET PRIVATE SECTION",
+						"value" : 0.000132, "lat" : 51.4913989,
+						"long" : -0.1314953
+					},
+					{
+						"StreetName" : "DOVER STREET", "value" : 0.002721,
+						"lat" : 51.5084028, "long" : -0.1421695
+					},
+					{
+						"StreetName" : "MILFORD LANE", "value" : 0.002892,
+						"lat" : 51.5124385, "long" : -0.1133109
+					},
+					{
+						"StreetName" : "MONTAGU SQUARE", "value" : 0.153526,
+						"lat" : 51.5188446, "long" : -0.1599349
+					},
+					{
+						"StreetName" : "CHILTERN STREET", "value" : 0.002922,
+						"lat" : 51.5196425, "long" : -0.1552036
+					},
+					{
+						"StreetName" : "INVERNESS MEWS", "value" : 0.002921,
+						"lat" : 51.512173, "long" : -0.1871396
+					},
+					{
+						"StreetName" : "GLOUCESTER PLACE", "value" : 0.002838,
+						"lat" : 51.5190999, "long" : -0.1584399
+					},
+					{
+						"StreetName" : "LANCASTER PLACE", "value" : 0.002954,
+						"lat" : 51.5113074, "long" : -0.1190358
+					},
+					{
+						"StreetName" : "BOURNE TERRACE", "value" : 0.002821,
+						"lat" : 51.5210557, "long" : -0.1894706
+					},
+					{
+						"StreetName" : "BENNETT'S YARD", "value" : 0.002747,
+						"lat" : 51.4960006, "long" : -0.1286817
+					},
+					{
+						"StreetName" : "SUBWAY PARLIAMENT STREET\/PARLIAMENT SQUA",
+						"value" : 0.002819, "lat" : 51.5012374,
+						"long" : -0.1264532
+					},
+					{
+						"StreetName" : "ST JOHN'S WOOD TERRACE",
+						"value" : 0.002873, "lat" : 51.5343796,
+						"long" : -0.1705837
+					},
+					{
+						"StreetName" : "FRANCIS STREET", "value" : 0.002837,
+						"lat" : 51.4966674, "long" : -0.1370714
+					},
+					{
+						"StreetName" : "HARROWBY STREET", "value" : 0.00273,
+						"lat" : 51.5168708, "long" : -0.165526
+					},
+					{
+						"StreetName" : "ST MARTIN'S COURT", "value" : 0.002912,
+						"lat" : 51.5112235, "long" : -0.1284068
+					},
+					{
+						"StreetName" : "NORTH WHARF ROAD", "value" : 0.00248,
+						"lat" : 51.5187647, "long" : -0.1757685
+					},
+					{
+						"StreetName" : "ANGEL COURT", "value" : 0.153674,
+						"lat" : 51.5056123, "long" : -0.1368938
+					},
+					{
+						"StreetName" : "CHEPSTOW PLACE", "value" : 0.002334,
+						"lat" : 51.5120376, "long" : -0.1941059
+					},
+					{
+						"StreetName" : "ST JAMES'S MARKET", "value" : 0.002811,
+						"lat" : 51.5092523, "long" : -0.133373
+					},
+					{
+						"StreetName" : "KNIGHTSBRIDGE GREEN",
+						"value" : 0.002918, "lat" : 51.5010387,
+						"long" : -0.1622086
+					},
+					{
+						"StreetName" : "PLYMPTON STREET", "value" : 0.002918,
+						"lat" : 51.5243716, "long" : -0.1689092
+					},
+					{
+						"StreetName" : "HANSON STREET", "value" : 0.002974,
+						"lat" : 51.5204834, "long" : -0.140683
+					},
+					{
+						"StreetName" : "VAUXHALL BRIDGE ROAD",
+						"value" : 0.002827, "lat" : 51.4909474,
+						"long" : -0.1342075
+					},
+					{
+						"StreetName" : "SEYMOUR PLACE", "value" : 0.002522,
+						"lat" : 51.5205388, "long" : -0.1638199
+					},
+					{
+						"StreetName" : "ANDOVER PLACE", "value" : 0.002928,
+						"lat" : 51.5331102, "long" : -0.1884559
+					},
+					{
+						"StreetName" : "LONG ACRE", "value" : 0.00281,
+						"lat" : 51.513268, "long" : -0.1241002
+					},
+					{
+						"StreetName" : "NEWTON ROAD", "value" : 0.003695,
+						"lat" : 51.5159427, "long" : -0.1930866
+					},
+					{
+						"StreetName" : "HANOVER PLACE", "value" : 0.003635,
+						"lat" : 51.5131968, "long" : -0.1230222
+					},
+					{
+						"StreetName" : "SOUTH MOLTON LANE", "value" : 0.002939,
+						"lat" : 51.5136881, "long" : -0.1488435
+					},
+					{
+						"StreetName" : "DUKE STREET ST JAMES'S",
+						"value" : 0.153591, "lat" : 51.50761485,
+						"long" : -0.13804675
+					},
+					{
+						"StreetName" : "QUEENSWAY", "value" : 0.002766,
+						"lat" : 51.5154093, "long" : -0.1882362
+					},
+					{
+						"StreetName" : "CRAVEN ROAD", "value" : 0.002985,
+						"lat" : 51.5144629, "long" : -0.1776517
+					},
+					{
+						"StreetName" : "PARK WEST PLACE", "value" : 0.003582,
+						"lat" : 51.5156704, "long" : -0.1645453
+					},
+					{
+						"StreetName" : "RUPERT STREET", "value" : 0.002819,
+						"lat" : 51.5114824, "long" : -0.1330534
+					},
+					{
+						"StreetName" : "CRAVEN HILL GARDENS",
+						"value" : 0.002988, "lat" : 51.512242,
+						"long" : -0.1834619
+					},
+					{
+						"StreetName" : "POLLEN STREET", "value" : 0.002972,
+						"lat" : 51.5138029, "long" : -0.1424541
+					},
+					{
+						"StreetName" : "HANOVER STREET", "value" : 0.002957,
+						"lat" : 51.5138029, "long" : -0.1424541
+					},
+					{
+						"StreetName" : "SHEPHERD STREET", "value" : 0.002574,
+						"lat" : 51.5059428, "long" : -0.1488355
+					},
+					{
+						"StreetName" : "CAMBRIDGE SQUARE", "value" : 0.002944,
+						"lat" : 51.5160556, "long" : -0.1688692
+					},
+					{
+						"StreetName" : "VENABLES STREET", "value" : 0.002869,
+						"lat" : 51.5229105, "long" : -0.1732492
+					},
+					{
+						"StreetName" : "CHESTER SQUARE", "value" : 0.002951,
+						"lat" : 51.495867, "long" : -0.1492913
+					},
+					{
+						"StreetName" : "BOURDON STREET", "value" : 0.002748,
+						"lat" : 51.512136, "long" : -0.1450873
+					},
+					{
+						"StreetName" : "TYLER'S COURT", "value" : 0.002921,
+						"lat" : 51.5132802, "long" : -0.1338857
+					},
+					{
+						"StreetName" : "MAIDEN LANE", "value" : 0.002794,
+						"lat" : 51.5103592, "long" : -0.1241106
+					},
+					{
+						"StreetName" : "LIVONIA STREET", "value" : 0.003574,
+						"lat" : 51.5141861, "long" : -0.135434
+					},
+					{
+						"StreetName" : "ANDREWS CROSSE", "value" : 0.002569,
+						"lat" : 51.5142865, "long" : -0.1119085
+					},
+					{
+						"StreetName" : "COURTNELL STREET", "value" : 0.002835,
+						"lat" : 51.5169608, "long" : -0.1990566
+					},
+					{
+						"StreetName" : "ALDFORD STREET", "value" : 0.002826,
+						"lat" : 51.5088508, "long" : -0.1523109
+					},
+					{
+						"StreetName" : "BELGRAVE SQUARE", "value" : 0.153516,
+						"lat" : 51.4985362, "long" : -0.1528868
+					},
+					{
+						"StreetName" : "HAUNCH OF VENISON YARD",
+						"value" : 0.002905, "lat" : 51.5136905,
+						"long" : -0.1472868
+					},
+					{
+						"StreetName" : "BRIDLE LANE", "value" : 0.003004,
+						"lat" : 51.5114041, "long" : -0.1357926
+					},
+					{
+						"StreetName" : "BATEMAN STREET", "value" : 0.003,
+						"lat" : 51.5137359, "long" : -0.1325699
+					},
+					{
+						"StreetName" : "VERE STREET", "value" : 0.002966,
+						"lat" : 51.5146467, "long" : -0.1469021
+					},
+					{
+						"StreetName" : "BYWELL PLACE", "value" : 0.002781,
+						"lat" : 51.5183366, "long" : -0.1397039
+					},
+					{
+						"StreetName" : "ST GEORGE'S SQUARE",
+						"value" : 0.002779, "lat" : 51.4858927,
+						"long" : -0.1335929
+					},
+					{
+						"StreetName" : "SHAFTESBURY AVENUE",
+						"value" : 0.002903, "lat" : 51.5111168,
+						"long" : -0.1335539
+					},
+					{
+						"StreetName" : "SHERLOCK MEWS", "value" : 0.002657,
+						"lat" : 51.5203937, "long" : -0.1560814
+					},
+					{
+						"StreetName" : "CHADWICK STREET", "value" : 0.002732,
+						"lat" : 51.4963777, "long" : -0.1320033
+					},
+					{
+						"StreetName" : "CRANBOURN STREET", "value" : 0.002841,
+						"lat" : 51.5117964, "long" : -0.1271151
+					},
+					{
+						"StreetName" : "BABMAES STREET", "value" : 0.002902,
+						"lat" : 51.5088869, "long" : -0.1352758
+					},
+					{
+						"StreetName" : "GROSVENOR ROAD", "value" : 0.001663,
+						"lat" : 51.4857057, "long" : -0.1456131
+					},
+					{
+						"StreetName" : "STRAND", "value" : 0.002814,
+						"lat" : 51.51247065, "long" : -0.11586765
+					},
+					{
+						"StreetName" : "SOUTH STREET", "value" : 0.00294,
+						"lat" : 51.5084295, "long" : -0.1512616
+					},
+					{
+						"StreetName" : "MONTAGU MEWS NORTH",
+						"value" : 0.002809, "lat" : 51.5197922,
+						"long" : -0.1595795
+					},
+					{
+						"StreetName" : "PALACE COURT", "value" : 0.002974,
+						"lat" : 51.5120116, "long" : -0.1924207
+					},
+					{
+						"StreetName" : "CONNAUGHT PLACE", "value" : 0.002916,
+						"lat" : 51.5138195, "long" : -0.161298
+					},
+					{
+						"StreetName" : "EAGLE PLACE", "value" : 0.001459,
+						"lat" : 51.5088961, "long" : -0.1352898
+					},
+					{
+						"StreetName" : "TEMPLE PLACE", "value" : 0.002989,
+						"lat" : 51.5110171, "long" : -0.1149549
+					},
+					{
+						"StreetName" : "PAGE STREET", "value" : 0.003722,
+						"lat" : 51.4939354, "long" : -0.1294431
+					},
+					{
+						"StreetName" : "DUCK LANE", "value" : 0.00286,
+						"lat" : 51.5139873, "long" : -0.134808
+					},
+					{
+						"StreetName" : "SEYMOUR STREET", "value" : 0.002684,
+						"lat" : 51.5147542, "long" : -0.1582982
+					},
+					{
+						"StreetName" : "REGENT STREET", "value" : 0.002428,
+						"lat" : 51.5162459, "long" : -0.1423526
+					},
+					{
+						"StreetName" : "ADELAIDE STREET", "value" : 0.002865,
+						"lat" : 51.5091421, "long" : -0.1258982
+					},
+					{
+						"StreetName" : "CHANDOS STREET", "value" : 0.002914,
+						"lat" : 51.5178597, "long" : -0.1447969
+					},
+					{
+						"StreetName" : "BELL YARD", "value" : 0.0029,
+						"lat" : 51.5139957, "long" : -0.111752
+					},
+					{
+						"StreetName" : "GREENCOAT PLACE", "value" : 0.002516,
+						"lat" : 51.4940881, "long" : -0.13763035
+					},
+					{
+						"StreetName" : "DERING STREET", "value" : 0.002824,
+						"lat" : 51.5145103, "long" : -0.1460328
+					},
+					{
+						"StreetName" : "CAVENDISH SQUARE", "value" : 0.002992,
+						"lat" : 51.5168534, "long" : -0.1459909
+					},
+					{
+						"StreetName" : "KING CHARLES STREET",
+						"value" : 0.00295, "lat" : 51.5021061,
+						"long" : -0.126109
+					},
+					{
+						"StreetName" : "KNOX STREET", "value" : 0.002889,
+						"lat" : 51.5201581, "long" : -0.1611215
+					},
+					{
+						"StreetName" : "MANETTE STREET", "value" : 0.002914,
+						"lat" : 51.5145962, "long" : -0.131252
+					},
+					{
+						"StreetName" : "HANOVER GATE", "value" : 0.002976,
+						"lat" : 51.5284228, "long" : -0.1651711
+					},
+					{
+						"StreetName" : "PRINCES MEWS", "value" : 0.002627,
+						"lat" : 51.5124654, "long" : -0.1931362
+					},
+					{
+						"StreetName" : "CRAWFORD PLACE", "value" : 0.002894,
+						"lat" : 51.5176551, "long" : -0.1666707
+					},
+					{
+						"StreetName" : "BOTTS PASSAGE", "value" : 0.153472,
+						"lat" : 51.5155609, "long" : -0.1945718
+					},
+					{
+						"StreetName" : "HUNGERFORD BRIDGE", "value" : 0.002829,
+						"lat" : 51.5073865, "long" : -0.1229585
+					},
+					{
+						"StreetName" : "PETER STREET", "value" : 0.00304,
+						"lat" : 51.5129802, "long" : -0.1336817
+					},
+					{
+						"StreetName" : "BROAD COURT", "value" : 0.002649,
+						"lat" : 51.5135496, "long" : -0.1225897
+					},
+					{
+						"StreetName" : "AGAR STREET", "value" : 0.003006,
+						"lat" : 51.5101044, "long" : -0.1247778
+					},
+					{
+						"StreetName" : "MAIDA AVENUE", "value" : 0.002852,
+						"lat" : 51.5228154, "long" : -0.1798551
+					},
+					{
+						"StreetName" : "HORSEFERRY ROAD", "value" : 0.002593,
+						"lat" : 51.4948511, "long" : -0.128055
+					},
+					{
+						"StreetName" : "DAVIES STREET", "value" : 0.002733,
+						"lat" : 51.5109329, "long" : -0.1474852
+					},
+					{
+						"StreetName" : "MONMOUTH PLACE", "value" : 0.153487,
+						"lat" : 51.5156174, "long" : -0.1929842
+					},
+					{
+						"StreetName" : "NEATHOUSE PLACE", "value" : 0.002871,
+						"lat" : 51.4945721, "long" : -0.1421307
+					},
+					{
+						"StreetName" : "BENTINCK MEWS", "value" : 0.002985,
+						"lat" : 51.5173787, "long" : -0.1507837
+					},
+					{
+						"StreetName" : "COCHRANE MEWS", "value" : 0.002846,
+						"lat" : 51.5334548, "long" : -0.1712552
+					},
+					{
+						"StreetName" : "LITTLE ARGYLL STREET",
+						"value" : 0.002688, "lat" : 51.5146826,
+						"long" : -0.1408229
+					},
+					{
+						"StreetName" : "STILLINGTON STREET",
+						"value" : 0.153639, "lat" : 51.4949279,
+						"long" : -0.1385254
+					},
+					{
+						"StreetName" : "MASON'S YARD", "value" : 0.00302,
+						"lat" : 51.507446, "long" : -0.1374891
+					},
+					{
+						"StreetName" : "SUTHERLAND AVENUE", "value" : 0.001627,
+						"lat" : 51.52429468, "long" : -0.1905125
+					},
+					{
+						"StreetName" : "HYDE PARK CORNER", "value" : 0.003559,
+						"lat" : 51.5030487, "long" : -0.1521999
+					},
+					{
+						"StreetName" : "PARK LANE SERVICE ROAD",
+						"value" : 0.153508, "lat" : 51.5101297,
+						"long" : -0.1564384
+					},
+					{
+						"StreetName" : "MARBLE ARCH", "value" : 0.002791,
+						"lat" : 51.5133442, "long" : -0.1590076
+					},
+					{
+						"StreetName" : "BROADLEY STREET", "value" : 0.002814,
+						"lat" : 51.52210185, "long" : -0.1701174
+					},
+					{
+						"StreetName" : "GREYCOAT PLACE", "value" : 0.002936,
+						"lat" : 51.4965215, "long" : -0.1337083
+					},
+					{
+						"StreetName" : "MANCHESTER STREET", "value" : 0.002935,
+						"lat" : 51.5184435, "long" : -0.1538684
+					},
+					{
+						"StreetName" : "INGESTRE PLACE", "value" : 0.002888,
+						"lat" : 51.5135289, "long" : -0.1359509
+					},
+					{
+						"StreetName" : "BRIDSTOW PLACE", "value" : 0.002562,
+						"lat" : 51.5155879, "long" : -0.1952263
+					},
+					{
+						"StreetName" : "CHEPSTOW ROAD", "value" : 0.000132,
+						"lat" : 51.5156794, "long" : -0.195259
+					},
+					{
+						"StreetName" : "BIRD STREET", "value" : 0.153651,
+						"lat" : 51.5149368, "long" : -0.1510412
+					},
+					{
+						"StreetName" : "LILESTONE STREET", "value" : 0.00294,
+						"lat" : 51.5256545, "long" : -0.1663533
+					},
+					{
+						"StreetName" : "GOLDEN SQUARE", "value" : 0.002614,
+						"lat" : 51.5117235, "long" : -0.1377828
+					},
+					{
+						"StreetName" : "LEES PLACE", "value" : 0.000233,
+						"lat" : 51.5119436, "long" : -0.1551257
+					},
+					{
+						"StreetName" : "SAVOY STREET", "value" : 0.153477,
+						"lat" : 51.5097898, "long" : -0.1186084
+					},
+					{
+						"StreetName" : "BROOK STREET", "value" : 0.002902,
+						"lat" : 51.5126817, "long" : -0.1483222
+					},
+					{
+						"StreetName" : "GLOBE YARD", "value" : 0.002896,
+						"lat" : 51.5135142, "long" : -0.1475102
+					},
+					{
+						"StreetName" : "JOHN ADAM STREET", "value" : 0.002916,
+						"lat" : 51.509181, "long" : -0.1229144
+					},
+					{
+						"StreetName" : "ST STEPHEN'S MEWS", "value" : 0.003006,
+						"lat" : 51.5187251, "long" : -0.1962484
+					},
+					{
+						"StreetName" : "COVENTRY STREET", "value" : 0.002884,
+						"lat" : 51.5101053, "long" : -0.1334536
+					},
+					{
+						"StreetName" : "SMITH'S COURT", "value" : 0.002787,
+						"lat" : 51.5116095, "long" : -0.1345737
+					},
+					{
+						"StreetName" : "ST MATTHEW STREET", "value" : 0.00268,
+						"lat" : 51.4975155, "long" : -0.1332909
+					},
+					{
+						"StreetName" : "LEDBURY ROAD", "value" : 0.002942,
+						"lat" : 51.5177577, "long" : -0.2005963
+					},
+					{
+						"StreetName" : "CHURCH PATH", "value" : 0.002991,
+						"lat" : 51.5090711, "long" : -0.1270828
+					},
+					{
+						"StreetName" : "UPPER MONTAGU STREET",
+						"value" : 0.002711, "lat" : 51.52052845,
+						"long" : -0.1605455
+					},
+					{
+						"StreetName" : "HEREFORD ROAD", "value" : 0.002897,
+						"lat" : 51.5176476, "long" : -0.1947575
+					},
+					{
+						"StreetName" : "GLOUCESTER STREET", "value" : 0.002873,
+						"lat" : 51.490735, "long" : -0.1395173
+					},
+					{
+						"StreetName" : "LEICESTER COURT", "value" : 0.002902,
+						"lat" : 51.5111371, "long" : -0.1291886
+					},
+					{
+						"StreetName" : "PRINCES STREET", "value" : 0.003554,
+						"lat" : 51.514253, "long" : -0.1436176
+					},
+					{
+						"StreetName" : "PALACE STREET", "value" : 0.002986,
+						"lat" : 51.496954, "long" : -0.139264
+					},
+					{
+						"StreetName" : "LYALL STREET", "value" : 0.002791,
+						"lat" : 51.4953356, "long" : -0.1535061
+					},
+					{
+						"StreetName" : "CORK STREET MEWS", "value" : 0.003664,
+						"lat" : 51.5103728, "long" : -0.1422046
+					},
+					{
+						"StreetName" : "GREENWELL STREET", "value" : 0.002839,
+						"lat" : 51.522835, "long" : -0.1432396
+					},
+					{
+						"StreetName" : "NORTH ROW", "value" : 0.002934,
+						"lat" : 51.5130538, "long" : -0.15623045
+					},
+					{
+						"StreetName" : "FORMOSA STREET", "value" : 0.002708,
+						"lat" : 51.524197, "long" : -0.1857986
+					},
+					{
+						"StreetName" : "SPANISH PLACE", "value" : 0.002984,
+						"lat" : 51.5171085, "long" : -0.1524666
+					},
+					{
+						"StreetName" : "LISLE STREET", "value" : 0.002898,
+						"lat" : 51.5117516, "long" : -0.1293796
+					},
+					{
+						"StreetName" : "ASHLEY PLACE", "value" : 0.002907,
+						"lat" : 51.4960832, "long" : -0.141601
+					},
+					{
+						"StreetName" : "PALL MALL", "value" : 0.00001,
+						"lat" : 51.5061914, "long" : -0.135376
+					},
+					{
+						"StreetName" : "TAVISTOCK CRESCENT", "value" : 0.0028,
+						"lat" : 51.5203617, "long" : -0.200926
+					},
+					{
+						"StreetName" : "GRITTLETON ROAD", "value" : 0.00284,
+						"lat" : 51.525629, "long" : -0.1960907
+					},
+					{
+						"StreetName" : "ST GEORGE STREET", "value" : 0.00294,
+						"lat" : 51.5126364, "long" : -0.1431789
+					},
+					{
+						"StreetName" : "CHIPPENHAM ROAD", "value" : 0.002908,
+						"lat" : 51.5249715, "long" : -0.1974726
+					},
+					{
+						"StreetName" : "NEWMAN PASSAGE", "value" : 0.002846,
+						"lat" : 51.5179152, "long" : -0.1358704
+					},
+					{
+						"StreetName" : "HALF MOON STREET", "value" : 0.001638,
+						"lat" : 51.5069923, "long" : -0.1462329
+					},
+					{
+						"StreetName" : "CHAPEL PLACE", "value" : 0.002567,
+						"lat" : 51.5088371, "long" : -0.1514468
+					},
+					{
+						"StreetName" : "PARK CRESCENT MEWS EAST",
+						"value" : 0.002986, "lat" : 51.5227305,
+						"long" : -0.1451611
+					},
+					{
+						"StreetName" : "SOUTHCOTT MEWS", "value" : 0.002737,
+						"lat" : 51.5330405, "long" : -0.1694839
+					},
+					{
+						"StreetName" : "HANWAY STREET", "value" : 0.00013,
+						"lat" : 51.5096997, "long" : -0.1278026
+					},
+					{
+						"StreetName" : "LUMLEY COURT", "value" : 0.002923,
+						"lat" : 51.510225, "long" : -0.1221933
+					},
+					{
+						"StreetName" : "MANCHESTER SQUARE", "value" : 0.002701,
+						"lat" : 51.5166515, "long" : -0.1531977
+					},
+					{
+						"StreetName" : "QUEEN STREET", "value" : 0.002869,
+						"lat" : 51.5076937, "long" : -0.1473717
+					},
+					{
+						"StreetName" : "LITCHFIELD STREET", "value" : 0.002878,
+						"lat" : 51.5127327, "long" : -0.1277396
+					},
+					{
+						"StreetName" : "LEICESTER SQUARE", "value" : 0.003547,
+						"lat" : 51.5107473, "long" : -0.13034685
+					},
+					{
+						"StreetName" : "CRAVEN STREET", "value" : 0.003044,
+						"lat" : 51.5078324, "long" : -0.1255341
+					},
+					{
+						"StreetName" : "TUFTON STREET", "value" : 0.153568,
+						"lat" : 51.4953137, "long" : -0.1281661
+					},
+					{
+						"StreetName" : "AMBROSDEN AVENUE", "value" : 0.002753,
+						"lat" : 51.4967531, "long" : -0.1391802
+					},
+					{
+						"StreetName" : "VILLIERS STREET", "value" : 0.002862,
+						"lat" : 51.5083979, "long" : -0.1243436
+					},
+					{
+						"StreetName" : "CHARING CROSS", "value" : 0.0025,
+						"lat" : 51.5073518, "long" : -0.1280092
+					},
+					{
+						"StreetName" : "PRINCE ALBERT ROAD",
+						"value" : 0.002952, "lat" : 51.531044,
+						"long" : -0.1671707
+					},
+					{
+						"StreetName" : "JAMES STREET", "value" : 0.002747,
+						"lat" : 51.5150191, "long" : -0.1506069
+					},
+					{
+						"StreetName" : "EATON SQUARE", "value" : 0.003633,
+						"lat" : 51.4951381, "long" : -0.152869
+					},
+					{
+						"StreetName" : "ORANGE STREET", "value" : 0.002765,
+						"lat" : 51.50932475, "long" : -0.1305815
+					},
+					{
+						"StreetName" : "ALBEMARLE STREET", "value" : 0.003025,
+						"lat" : 51.5086621, "long" : -0.1415104
+					},
+					{
+						"StreetName" : "MARYLANDS ROAD", "value" : 0.002982,
+						"lat" : 51.525485, "long" : -0.1914112
+					},
+					{
+						"StreetName" : "LONGMOORE STREET", "value" : 0.153553,
+						"lat" : 51.4929045, "long" : -0.1396595
+					},
+					{
+						"StreetName" : "VINCENT STREET", "value" : 0.002945,
+						"lat" : 51.4929766, "long" : -0.1311859
+					},
+					{
+						"StreetName" : "BLOOMFIELD PLACE", "value" : 0.002872,
+						"lat" : 51.5115934, "long" : -0.1448416
+					},
+					{
+						"StreetName" : "MADDOX STREET", "value" : 0.002752,
+						"lat" : 51.5122969, "long" : -0.144461
+					},
+					{
+						"StreetName" : "ORMOND YARD", "value" : 0.002944,
+						"lat" : 51.5082547, "long" : -0.1362383
+					},
+					{
+						"StreetName" : "COCKSPUR STREET", "value" : 0.002873,
+						"lat" : 51.5076645, "long" : -0.1311446
+					},
+					{
+						"StreetName" : "SPRING GARDENS", "value" : 0.002841,
+						"lat" : 51.5064488, "long" : -0.1278677
+					},
+					{
+						"StreetName" : "SEVINGTON STREET", "value" : 0.002818,
+						"lat" : 51.5247528, "long" : -0.19224055
+					},
+					{
+						"StreetName" : "CONDUIT STREET", "value" : 0.002932,
+						"lat" : 51.5116297, "long" : -0.1426434
+					},
+					{
+						"StreetName" : "LEICESTER STREET", "value" : 0.002839,
+						"lat" : 51.5112079, "long" : -0.1313763
+					},
+					{
+						"StreetName" : "BEDFORDBURY", "value" : 0.002868,
+						"lat" : 51.5111384, "long" : -0.1258883
+					},
+					{
+						"StreetName" : "PARK STREET", "value" : 0.153581,
+						"lat" : 51.5126141, "long" : -0.1554445
+					},
+					{
+						"StreetName" : "BUCKINGHAM STREET", "value" : 0.002822,
+						"lat" : 51.5086783, "long" : -0.1238853
+					},
+					{
+						"StreetName" : "GREAT PULTENEY STREET",
+						"value" : 0.002904, "lat" : 51.5116138,
+						"long" : -0.1354094
+					},
+					{
+						"StreetName" : "PORTMAN SQUARE", "value" : 0.002895,
+						"lat" : 51.5150683, "long" : -0.1565416
+					},
+					{
+						"StreetName" : "GOSFIELD STREET", "value" : 0.00283,
+						"lat" : 51.5190317, "long" : -0.1415201
+					},
+					{
+						"StreetName" : "ROBERT ADAM STREET",
+						"value" : 0.002714, "lat" : 51.5171225,
+						"long" : -0.1544984
+					},
+					{
+						"StreetName" : "CHESTER MEWS", "value" : 0.00287,
+						"lat" : 51.4992588, "long" : -0.1490971
+					},
+					{
+						"StreetName" : "STRUTTON GROUND", "value" : 0.002769,
+						"lat" : 51.4966256, "long" : -0.1336809
+					},
+					{
+						"StreetName" : "CATO STREET", "value" : 0.002813,
+						"lat" : 51.5175774, "long" : -0.1644888
+					},
+					{
+						"StreetName" : "ST VINCENT STREET", "value" : 0.003043,
+						"lat" : 51.5188154, "long" : -0.1529308
+					},
+					{
+						"StreetName" : "CAXTON STREET", "value" : 0.153463,
+						"lat" : 51.4985541, "long" : -0.1352655
+					},
+					{
+						"StreetName" : "ECCLESTON BRIDGE", "value" : 0.002974,
+						"lat" : 51.4941029, "long" : -0.1466265
+					},
+					{
+						"StreetName" : "CROSS KEYS CLOSE", "value" : 0.003594,
+						"lat" : 51.5180829, "long" : -0.150957
+					},
+					{
+						"StreetName" : "GREAT CHAPEL STREET",
+						"value" : 0.002976, "lat" : 51.5160653,
+						"long" : -0.134641
+					},
+					{
+						"StreetName" : "SHAVER'S PLACE", "value" : 0.002989,
+						"lat" : 51.5096844, "long" : -0.1328365
+					},
+					{
+						"StreetName" : "HAYMARKET", "value" : 0.003016,
+						"lat" : 51.5101172, "long" : -0.1333568
+					},
+					{
+						"StreetName" : "NEW BOND STREET", "value" : 0.003073,
+						"lat" : 51.5111632, "long" : -0.1432821
+					},
+					{
+						"StreetName" : "COBURG CLOSE", "value" : 0.002962,
+						"lat" : 51.4944762, "long" : -0.1372617
+					},
+					{
+						"StreetName" : "LONG'S COURT", "value" : 0.002989,
+						"lat" : 51.5097206, "long" : -0.1300249
+					},
+					{
+						"StreetName" : "SALEM ROAD", "value" : 0.002881,
+						"lat" : 51.5133494, "long" : -0.1889729
+					},
+					{
+						"StreetName" : "HILL'S PLACE", "value" : 0.002825,
+						"lat" : 51.5148253, "long" : -0.1400056
+					},
+					{
+						"StreetName" : "EXETER STREET", "value" : 0.002925,
+						"lat" : 51.5105844, "long" : -0.1210544
+					},
+					{
+						"StreetName" : "PARK LANE", "value" : 0.002913,
+						"lat" : 51.5066893, "long" : -0.1524396
+					},
+					{
+						"StreetName" : "CUMBERLAND STREET", "value" : 0.002358,
+						"lat" : 51.4885698, "long" : -0.1441861
+					},
+					{
+						"StreetName" : "ST LUKE'S ROAD", "value" : 0.002978,
+						"lat" : 51.5202107, "long" : -0.2033968
+					},
+					{
+						"StreetName" : "LUXBOROUGH STREET", "value" : 0.002009,
+						"lat" : 51.522658, "long" : -0.1542456
+					},
+					{
+						"StreetName" : "BRIDGE PLACE", "value" : 0.002767,
+						"lat" : 51.4933834, "long" : -0.1446252
+					},
+					{
+						"StreetName" : "THORNTON PLACE", "value" : 0.003668,
+						"lat" : 51.5210511, "long" : -0.1601486
+					},
+					{
+						"StreetName" : "NORTHUMBERLAND PLACE",
+						"value" : 0.153471, "lat" : 51.5173102,
+						"long" : -0.1966358
+					},
+					{
+						"StreetName" : "ADAM STREET", "value" : 0.002856,
+						"lat" : 51.5091175, "long" : -0.1215471
+					},
+					{
+						"StreetName" : "DEAN STREET", "value" : 0.002954,
+						"lat" : 51.5146456, "long" : -0.1331909
+					},
+					{
+						"StreetName" : "VICTORIA STREET", "value" : 0.001636,
+						"lat" : 51.49708545, "long" : -0.1401239
+					},
+					{
+						"StreetName" : "LANGHAM STREET", "value" : 0.002989,
+						"lat" : 51.5188996, "long" : -0.1421818
+					},
+					{
+						"StreetName" : "PICCADILLY CIRCUS", "value" : 0.002877,
+						"lat" : 51.50997935, "long" : -0.13469795
+					},
+					{
+						"StreetName" : "PICCADILLY", "value" : 0.002963,
+						"lat" : 51.5031092, "long" : -0.1497623
+					},
+					{
+						"StreetName" : "HAREWOOD AVENUE", "value" : 0.002999,
+						"lat" : 51.521223, "long" : -0.1630823
+					},
+					{
+						"StreetName" : "FLORAL STREET", "value" : 0.002845,
+						"lat" : 51.5119624, "long" : -0.1254428
+					},
+					{
+						"StreetName" : "SOUTH MOLTON STREET",
+						"value" : 0.002867, "lat" : 51.5141752,
+						"long" : -0.1490951
+					},
+					{
+						"StreetName" : "ARNEWAY STREET", "value" : 0.001535,
+						"lat" : 51.4954247, "long" : -0.1318781
+					},
+					{
+						"StreetName" : "ST ANNE'S COURT", "value" : 0.003749,
+						"lat" : 51.51425855, "long" : -0.1343868
+					},
+					{
+						"StreetName" : "SOUTH MOLTON PASSAGE", "value" : 0.0,
+						"lat" : 51.5137278, "long" : -0.1485104
+					},
+					{
+						"StreetName" : "GEORGE STREET", "value" : 0.153517,
+						"lat" : 51.5174511, "long" : -0.1553787
+					},
+					{
+						"StreetName" : "CECIL COURT", "value" : 0.003029,
+						"lat" : 51.5107018, "long" : -0.1283994
+					},
+					{
+						"StreetName" : "MORPETH TERRACE", "value" : 0.002843,
+						"lat" : 51.4962319, "long" : -0.1402299
+					},
+					{
+						"StreetName" : "MOSCOW ROAD", "value" : 0.002834,
+						"lat" : 51.5116948, "long" : -0.194033
+					},
+					{
+						"StreetName" : "DUNCANNON STREET", "value" : 0.00284,
+						"lat" : 51.508578, "long" : -0.1271751
+					},
+					{
+						"StreetName" : "CHILWORTH MEWS", "value" : 0.0027,
+						"lat" : 51.5159987, "long" : -0.178587
+					},
+					{
+						"StreetName" : "AMBERLEY ROAD", "value" : 0.00287,
+						"lat" : 51.5227106, "long" : -0.1934384
+					},
+					{
+						"StreetName" : "HENRIETTA STREET", "value" : 0.002876,
+						"lat" : 51.51092815, "long" : -0.12422485
+					},
+					{
+						"StreetName" : "HINDE STREET", "value" : 0.002957,
+						"lat" : 51.5169422, "long" : -0.1512996
+					},
+					{
+						"StreetName" : "LUMLEY STREET", "value" : 0.002819,
+						"lat" : 51.5138524, "long" : -0.151849
+					},
+					{
+						"StreetName" : "ST JAMES'S SQUARE", "value" : 0.00296,
+						"lat" : 51.5070537, "long" : -0.1342267
+					},
+					{
+						"StreetName" : "ENBROOK STREET", "value" : 0.002733,
+						"lat" : 51.5279512, "long" : -0.2103148
+					},
+					{
+						"StreetName" : "ST MARGARET STREET",
+						"value" : 0.002923, "lat" : 51.4997527,
+						"long" : -0.1261763
+					},
+					{
+						"StreetName" : "LAZENBY COURT", "value" : 0.002973,
+						"lat" : 51.5116379, "long" : -0.1256372
+					},
+					{
+						"StreetName" : "JONES STREET", "value" : 0.002698,
+						"lat" : 51.5104384, "long" : -0.1463524
+					},
+					{
+						"StreetName" : "TERMINUS PLACE", "value" : 0.002702,
+						"lat" : 51.4960604, "long" : -0.1447318
+					},
+					{
+						"StreetName" : "ST PETERSBURGH PLACE",
+						"value" : 0.0028, "lat" : 51.5123231,
+						"long" : -0.1910393
+					},
+					{
+						"StreetName" : "CHARLOTTE PLACE", "value" : 0.002874,
+						"lat" : 51.5186703, "long" : -0.1357985
+					},
+					{
+						"StreetName" : "MAIDA VALE", "value" : 0.00294,
+						"lat" : 51.5256015, "long" : -0.1780141
+					},
+					{
+						"StreetName" : "BOURCHIER STREET", "value" : 0.003011,
+						"lat" : 51.5129456, "long" : -0.1328859
+					},
+					{
+						"StreetName" : "STANHOPE PLACE", "value" : 0.001484,
+						"lat" : 51.5134607, "long" : -0.1629768
+					},
+					{
+						"StreetName" : "SACKVILLE STREET", "value" : 0.002938,
+						"lat" : 51.5102677, "long" : -0.1389807
+					},
+					{
+						"StreetName" : "CLAY STREET", "value" : 0.002789,
+						"lat" : 51.5200311, "long" : -0.1581861
+					},
+					{
+						"StreetName" : "BINNEY STREET", "value" : 0.153597,
+						"lat" : 51.5142301, "long" : -0.1507095
+					},
+					{
+						"StreetName" : "PENFOLD STREET", "value" : 0.000086,
+						"lat" : 51.5227508, "long" : -0.17136715
+					},
+					{
+						"StreetName" : "VICTORIA EMBANKMENT",
+						"value" : 0.003224, "lat" : 51.506190275,
+						"long" : -0.11847155
+					},
+					{
+						"StreetName" : "DURWESTON STREET", "value" : 0.002808,
+						"lat" : 51.5203899, "long" : -0.1598437
+					},
+					{
+						"StreetName" : "NASSAU STREET", "value" : 0.153555,
+						"lat" : 51.5192374, "long" : -0.1392347
+					},
+					{
+						"StreetName" : "FOUBERT'S PLACE", "value" : 0.002801,
+						"lat" : 51.513832, "long" : -0.1389227
+					},
+					{
+						"StreetName" : "ABBEY ORCHARD STREET",
+						"value" : 0.002751, "lat" : 51.4983377,
+						"long" : -0.1311673
+					},
+					{
+						"StreetName" : "LOWER JOHN STREET", "value" : 0.003626,
+						"lat" : 51.5108272, "long" : -0.1368394
+					},
+					{
+						"StreetName" : "MEARD STREET", "value" : 0.002801,
+						"lat" : 51.513345, "long" : -0.1327257
+					},
+					{
+						"StreetName" : "DENMAN STREET", "value" : 0.002697,
+						"lat" : 51.5107517, "long" : -0.1339844
+					},
+					{
+						"StreetName" : "GARRICK STREET", "value" : 0.002583,
+						"lat" : 51.5115757, "long" : -0.126245
+					},
+					{
+						"StreetName" : "CONNAUGHT SQUARE", "value" : 0.002853,
+						"lat" : 51.5147428, "long" : -0.1644529
+					},
+					{
+						"StreetName" : "NUTFORD PLACE", "value" : 0.002848,
+						"lat" : 51.5168921, "long" : -0.1627377
+					},
+					{
+						"StreetName" : "BULL INN COURT", "value" : 0.002792,
+						"lat" : 51.5100779, "long" : -0.1225596
+					},
+					{
+						"StreetName" : "ARNE STREET", "value" : 0.002901,
+						"lat" : 51.5147506, "long" : -0.1234628
+					},
+					{
+						"StreetName" : "SHIRLAND MEWS", "value" : 0.002993,
+						"lat" : 51.5279171, "long" : -0.1981051
+					},
+					{
+						"StreetName" : "BOW STREET", "value" : 0.002706,
+						"lat" : 51.5126553, "long" : -0.1212141
+					},
+					{
+						"StreetName" : "MARYLEBONE ROAD", "value" : 0.002896,
+						"lat" : 51.5216621, "long" : -0.16031645
+					},
+					{
+						"StreetName" : "LANSDOWNE ROW", "value" : 0.003067,
+						"lat" : 51.5081865, "long" : -0.1448205
+					},
+					{
+						"StreetName" : "DOVER YARD", "value" : 0.002793,
+						"lat" : 51.5077808, "long" : -0.1427905
+					},
+					{
+						"StreetName" : "PORTLAND MEWS", "value" : 0.003546,
+						"lat" : 51.5140319, "long" : -0.1359159
+					},
+					{
+						"StreetName" : "BRYANSTON SQUARE", "value" : 0.002831,
+						"lat" : 51.5185654, "long" : -0.1616325
+					},
+					{
+						"StreetName" : "LEICESTER PLACE", "value" : 0.153476,
+						"lat" : 51.5115352, "long" : -0.1304694
+					},
+					{
+						"StreetName" : "CHARLWOOD STREET", "value" : 0.002855,
+						"lat" : 51.48896, "long" : -0.1398633
+					},
+					{
+						"StreetName" : "VAUXHALL BRIDGE", "value" : 0.002826,
+						"lat" : 51.4886493, "long" : -0.129375
+					},
+					{
+						"StreetName" : "SUSSEX GARDENS", "value" : 0.002962,
+						"lat" : 51.5147224, "long" : -0.1735193
+					},
+					{
+						"StreetName" : "BRADEN STREET", "value" : 0.002794,
+						"lat" : 51.5243241, "long" : -0.189021
+					},
+					{
+						"StreetName" : "PADDINGTON STREET", "value" : 0.002848,
+						"lat" : 51.5206568, "long" : -0.1539374
+					},
+					{
+						"StreetName" : "ELIZABETH STREET", "value" : 0.002799,
+						"lat" : 51.49345275, "long" : -0.1503045
+					},
+					{
+						"StreetName" : "RADNOR MEWS", "value" : 0.002758,
+						"lat" : 51.5147468, "long" : -0.1721333
+					},
+					{
+						"StreetName" : "CHURTON PLACE", "value" : 0.002909,
+						"lat" : 51.4917829, "long" : -0.1386824
+					},
+					{
+						"StreetName" : "BOOTH'S PLACE", "value" : 0.002785,
+						"lat" : 51.5177724, "long" : -0.1387179
+					},
+					{
+						"StreetName" : "CROWN PASSAGE", "value" : 0.002898,
+						"lat" : 51.5061907, "long" : -0.1381302
+					},
+					{
+						"StreetName" : "UDALL STREET", "value" : 0.002853,
+						"lat" : 51.4928174, "long" : -0.1364361
+					},
+					{
+						"StreetName" : "HARCOURT STREET", "value" : 0.002737,
+						"lat" : 51.5196371, "long" : -0.1640254
+					},
+					{
+						"StreetName" : "CRANBOURN ALLEY", "value" : 0.153448,
+						"lat" : 51.5109226, "long" : -0.1287074
+					},
+					{
+						"StreetName" : "CHANCERY LANE", "value" : 0.003079,
+						"lat" : 51.5149858, "long" : -0.1114265
+					},
+					{
+						"StreetName" : "CHEVAL PLACE", "value" : 0.003088,
+						"lat" : 51.4992145, "long" : -0.1657399
+					},
+					{
+						"StreetName" : "EDGWARE ROAD", "value" : 0.002805,
+						"lat" : 51.517858, "long" : -0.1671549
+					},
+					{
+						"StreetName" : "VINE STREET", "value" : 0.002986,
+						"lat" : 51.5093982, "long" : -0.1374598
+					},
+					{
+						"StreetName" : "DEVEREUX COURT", "value" : 0.002686,
+						"lat" : 51.5126376, "long" : -0.112827
+					},
+					{
+						"StreetName" : "SUTHERLAND PLACE", "value" : 0.002767,
+						"lat" : 51.5171966, "long" : -0.197433
+					},
+					{
+						"StreetName" : "MARSHALL STREET", "value" : 0.002899,
+						"lat" : 51.5133845, "long" : -0.13794555
+					},
+					{
+						"StreetName" : "ADAM AND EVE COURT", "value" : 0.00285,
+						"lat" : 51.5157812, "long" : -0.1373434
+					},
+					{
+						"StreetName" : "OXENDON STREET", "value" : 0.002837,
+						"lat" : 51.5102973, "long" : -0.1322928
+					},
+					{
+						"StreetName" : "BERNERS MEWS", "value" : 0.002892,
+						"lat" : 51.5188259, "long" : -0.1371038
+					},
+					{
+						"StreetName" : "PORTMAN MEWS SOUTH",
+						"value" : 0.002796, "lat" : 51.5145432,
+						"long" : -0.1563178
+					},
+					{
+						"StreetName" : "GLASSHOUSE STREET", "value" : 0.003739,
+						"lat" : 51.5103786, "long" : -0.13675815
+					},
+					{
+						"StreetName" : "LITTLE ESSEX STREET",
+						"value" : 0.003672, "lat" : 51.5124385,
+						"long" : -0.1133109
+					},
+					{
+						"StreetName" : "SEYMOUR MEWS", "value" : 0.003033,
+						"lat" : 51.5160317, "long" : -0.1538615
+					},
+					{
+						"StreetName" : "ALL SOULS PLACE", "value" : 0.002836,
+						"lat" : 51.5182584, "long" : -0.1432817
+					},
+					{
+						"StreetName" : "HAM YARD", "value" : 0.00294,
+						"lat" : 51.5113989, "long" : -0.1343373
+					},
+					{
+						"StreetName" : "ECCLESTON PLACE", "value" : 0.153425,
+						"lat" : 51.4943307, "long" : -0.1473808
+					},
+					{
+						"StreetName" : "MAN IN MOON PASSAGE",
+						"value" : 0.00369, "lat" : 51.5095432,
+						"long" : -0.1369639
+					},
+					{
+						"StreetName" : "ST JOHN'S TERRACE", "value" : 0.002787,
+						"lat" : 51.5277325, "long" : -0.2154413
+					},
+					{
+						"StreetName" : "LINHOPE STREET", "value" : 0.003009,
+						"lat" : 51.5242509, "long" : -0.1617638
+					},
+					{
+						"StreetName" : "SOHO STREET", "value" : 0.002864,
+						"lat" : 51.5162499, "long" : -0.132885
+					},
+					{
+						"StreetName" : "SIDDONS LANE", "value" : 0.002749,
+						"lat" : 51.5240363, "long" : -0.1595525
+					},
+					{
+						"StreetName" : "NORRIS STREET", "value" : 0.002802,
+						"lat" : 51.5092204, "long" : -0.1324238
+					} ];
+			for (var i = 0; i < data.length; i++)
+			{
+				display(data[i], map);
+			}
+		}
+
+		function display(data_point, map)
+		{
+			var latLng =
+			{
+				'lat' : data_point['lat'], 'lng' : data_point['long']
+			};
+			var size = data_point['value'] == 0 ? data_point['value'] : Math
+					.log(data_point['value'] * 1000000);
+			var marker = new google.maps.Marker(
+			{
+				position : latLng,
+				map : map,
+				icon :
+				{
+					path : google.maps.SymbolPath.CIRCLE, fillColor : 'red',
+					fillOpacity : .2, scale : size, strokeColor : 'white',
+					strokeWeight : .5,
+
+				}, title : data_point['StreetName'] + " : " + size
+
+			});
+		}
+
+		google.maps.event.addDomListener(window, "load", init);
+	</script>
+</body>
+</html>

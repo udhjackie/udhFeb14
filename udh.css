@@ -1,0 +1,161 @@
+
+body {
+	margin: 0px;
+	padding: 0;
+	background: #263145;
+	font-family:  Garamond, Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	color: #263145;
+    text-align:center;
+}
+
+div#wrapper {
+  width: 960px ;
+  margin: 0 auto ;
+  margin-top: 30px;
+  background-color:white;
+  text-align:left;
+  z-index:-1;
+}
+
+#header {
+	width: 960px;
+	height: 104px;
+	margin: 0 auto;
+	background: #263145; }
+
+#logo {
+	float: left;
+	height: 65px;
+	margin: 0;
+	padding-top: 20px;
+	color: #FFFFFF;
+}
+
+#logo h1, #logo p {
+	margin: 0;
+	padding: 0;
+}
+
+#logo h1 {
+	float: left;
+	letter-spacing: -1px;
+	text-transform: lowercase;
+	font-size: 2.6em;
+}
+
+#books {
+    height: 55px;
+background: #263145 url(udc1.jpg) repeat-x left top;}
+
+#spacer {
+    height: 20px;
+background: #FFFFFF;}
+
+
+
+
+h1, h2, h3 {
+	margin: 0;
+	padding: 0;
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: normal;
+	
+}
+
+h1 {
+	font-size: 2em;
+}
+
+h2 {
+	font-size: 2em;
+}
+
+h3 {
+	font-size: 1.6em;
+}
+
+p, ul, ol, td {
+	margin-top: 0;
+	line-height: 180%;
+}
+
+ul, ol {
+}
+
+a {
+	text-decoration: none;
+	color: #704A21;
+}
+
+a:hover {
+}
+
+
+#sidebar {
+	float: right;
+	width: 200px;
+	padding: 0px 0px;
+	color: #848FA3;
+}
+
+#sidebar ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+#sidebar li {
+	margin: 0;
+	padding: 0;
+}
+
+#sidebar li ul {
+	background: url(img10.gif) repeat-x left top;
+	padding-bottom: 30px;
+}
+
+#sidebar li li {
+	background: url(img11.gif) repeat-x left bottom;
+	line-height: 35px;
+	margin: 0px 15px;
+	padding-left: 10px;
+}
+
+#sidebar li li span {
+	display: block;
+	margin-top: -20px;
+	padding: 0;
+	font-size: 11px;
+	font-style: italic;
+}
+
+#sidebar h2 {
+	height: 36px;
+	letter-spacing: -.5px;
+	padding: 13px 0px 0px 25px;
+	background: url(img09.gif) no-repeat left top;
+	font-size: 1.6em;
+	color: #5B7817;
+}
+
+#sidebar p {
+	margin: 0 0px;
+	padding: 20px 15px;
+	text-align: justify;
+}
+
+#sidebar a {
+	color: #FFFFFF;
+	border: none;
+}
+
+#sidebar a:hover {
+	text-decoration: underline;
+	color: #FFFFFF;
+}
+IMG{position:relative;top:0;left:0;border;thick double #083194}
+
+
+
+
